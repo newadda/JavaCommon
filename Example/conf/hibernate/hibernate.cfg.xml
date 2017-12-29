@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+    <hibernate-configuration>
+        <session-factory>
+            <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+            <property name="hibernate.connection.password">dbapassword</property>
+            <property name="hibernate.connection.url">jdbc:mysql://192.168.0.49:3306/DB_TEST?useSSL=false&amp;characterEncoding=UTF-8</property>
+            <property name="hibernate.default_schema">DB_FEP</property>
+            <property name="hibernate.connection.username">dba</property>
+            
+            <property name="hibernate.connection.CharSet">UTF-8</property>
+            <property name="hibernate.connection.characterEncoding">UTF-8</property>
+            <property name="hibernate.connection.useUnicode">true</property>
+            
+      		 <!-- SQL dialect 
+    		  <property name="dialect">db.MySQLCustomDialect</property> 
+    		 --> 
+             <property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
+			
+
+
+			<!-- Enable Hibernate's automatic session context management -->
+   			<property name="current_session_context_class">thread</property>
+
+
+			<!-- JDBC connection pool (use the built-in) -->
+        	<!-- <property name="connection.pool_size">1</property>-->
+
+
+
+            <!-- Vibur DBCP specific properties: -->
+   			<property name="hibernate.connection.provider_class"> org.vibur.dbcp.integration.ViburDBCPConnectionProvider</property> 
+    		<property name="hibernate.vibur.poolInitialSize">30</property>
+    		<property name="hibernate.vibur.poolMaxSize">30</property>
+    		<property name="hibernate.vibur.connectionIdleLimitInSeconds">30</property>
+    		<property name="hibernate.vibur.testConnectionQuery">isValid</property>
+    		
+    		<property name="hibernate.vibur.logQueryExecutionLongerThanMs">500</property>
+    		<property name="hibernate.vibur.logStackTraceForLongQueryExecution">true</property>
+    		<property name="hibernate.vibur.statementCacheMaxSize">200</property>        	
+
+
+
+            <!-- Echo all executed SQL to stdout -->
+            <property name="show_sql">true</property>
+			<property name="format_sql">true</property>
+			<property name="use_sql_comments">false</property>
+			
+			<!-- Table Class -->
+ 			<!-- <mapping class="db.table.Alm_History"/> -->
+			<mapping class="org.onecellboy.db.hibernate.table.Person"/>
+			<mapping class="org.onecellboy.db.hibernate.table.Person_Info"/>
+ 		
+ 			
+ 			<!-- View Class -->
+ 			<!--<mapping class=".db.table.Field_Info_View"/> -->
+ 		
+ 	
+
+        </session-factory>
+    </hibernate-configuration>
