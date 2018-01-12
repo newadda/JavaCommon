@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `people_car`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `people_car` (
-  `PEOPLE_ID` int(11) NOT NULL,
-  `CAR_ID` int(11) NOT NULL,
-  PRIMARY KEY (`PEOPLE_ID`,`CAR_ID`),
-  UNIQUE KEY `CAR_ID_UNIQUE` (`CAR_ID`),
-  KEY `fk_people_car_car_idx` (`CAR_ID`),
-  CONSTRAINT `fk_people_car_car` FOREIGN KEY (`CAR_ID`) REFERENCES `cars` (`CAR_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_people_car_people` FOREIGN KEY (`PEOPLE_ID`) REFERENCES `people` (`PEOPLE_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+  `PC_PEOPLE_ID` int(11) NOT NULL,
+  `PC_CAR_ID` int(11) NOT NULL,
+  PRIMARY KEY (`PC_PEOPLE_ID`,`PC_CAR_ID`),
+  UNIQUE KEY `CAR_ID_UNIQUE` (`PC_CAR_ID`),
+  KEY `fk_people_car_car_idx` (`PC_CAR_ID`),
+  CONSTRAINT `fk_people_car_car` FOREIGN KEY (`PC_CAR_ID`) REFERENCES `car` (`CAR_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_people_car_people` FOREIGN KEY (`PC_PEOPLE_ID`) REFERENCES `people` (`PEOPLE_ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -42,4 +42,4 @@ CREATE TABLE `people_car` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-02 16:56:08
+-- Dump completed on 2018-01-11 16:30:01

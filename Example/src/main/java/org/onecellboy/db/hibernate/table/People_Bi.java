@@ -39,9 +39,20 @@ public class People_Bi {
 	//@JoinColumn(name="PHONE_OWNER_ID",referencedColumnName="PEOPLE_ID")
 	private List<Phone_Bi> phones = new LinkedList<Phone_Bi>();
 	
+	@OneToMany(fetch=FetchType.LAZY,mappedBy="people", cascade = CascadeType.ALL,orphanRemoval=true)
+	private List<Car_Bi> cars = new LinkedList<Car_Bi>();
 	
 	
 	
+	
+	public List<Car_Bi> getCars() {
+		return cars;
+	}
+
+	public void setCars(List<Car_Bi> cars) {
+		this.cars = cars;
+	}
+
 	public List<Phone_Bi> getPhones() {
 		return phones;
 	}

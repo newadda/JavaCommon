@@ -16,19 +16,16 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `people_club`
+-- Table structure for table `car`
 --
 
-DROP TABLE IF EXISTS `people_club`;
+DROP TABLE IF EXISTS `car`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `people_club` (
-  `PC_PEOPLE_ID` int(11) NOT NULL,
-  `PC_CLUB_ID` int(11) NOT NULL,
-  PRIMARY KEY (`PC_PEOPLE_ID`,`PC_CLUB_ID`),
-  KEY `fk_people_club_club_idx` (`PC_CLUB_ID`),
-  CONSTRAINT `fk_people_club_club` FOREIGN KEY (`PC_CLUB_ID`) REFERENCES `club` (`CLUB_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_people_club_people` FOREIGN KEY (`PC_PEOPLE_ID`) REFERENCES `people` (`PEOPLE_ID`) ON DELETE CASCADE ON UPDATE CASCADE
+CREATE TABLE `car` (
+  `CAR_ID` int(11) NOT NULL AUTO_INCREMENT,
+  `CAR_NAME` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`CAR_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -41,4 +38,4 @@ CREATE TABLE `people_club` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-02 16:56:08
+-- Dump completed on 2018-01-11 16:30:01

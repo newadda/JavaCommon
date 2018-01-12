@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>labels francais</comment>
+<entry key="maCle1">워아이니</entry>
+<entry key="maCle2">la valeur de la cle 2</entry>
+<entry key="maCle3">la valeur de la cle 3</entry>
+</properties>

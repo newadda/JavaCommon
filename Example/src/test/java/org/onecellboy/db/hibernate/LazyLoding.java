@@ -9,6 +9,9 @@ public class LazyLoding {
 	@Test
 	public void test() {
 		fail("Not yet implemented");
+		
+		
+		
 	}
 
 }

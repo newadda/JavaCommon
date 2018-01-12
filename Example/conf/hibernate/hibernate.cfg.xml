@@ -7,7 +7,7 @@
             <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
             <property name="hibernate.connection.password">dbapassword</property>
             <property name="hibernate.connection.url">jdbc:mysql://192.168.0.49:3306/DB_TEST?useSSL=false&amp;characterEncoding=UTF-8</property>
-            <property name="hibernate.default_schema">DB_FEP</property>
+            <property name="hibernate.default_schema">DB_TEST</property>
             <property name="hibernate.connection.username">dba</property>
             
             <property name="hibernate.connection.CharSet">UTF-8</property>
@@ -45,7 +45,7 @@
 
             <!-- Echo all executed SQL to stdout -->
             <property name="show_sql">true</property>
-			<property name="format_sql">true</property>
+			<property name="format_sql">false</property>
 			<property name="use_sql_comments">false</property>
 			
 			<!-- Table Class -->
@@ -55,10 +55,15 @@
  		
  	
  	     	<mapping class="org.onecellboy.db.hibernate.table.Phone_Bi"/>
+ 	     	<mapping class="org.onecellboy.db.hibernate.table.Car_Bi"/>
+ 	     	
+ 	     	<mapping class="org.onecellboy.db.hibernate.table.People_Car"/>
+ 	     	
  	     	
  	     	
  	     	<mapping class="org.onecellboy.db.hibernate.table.People_Uni"/>
  	     	<mapping class="org.onecellboy.db.hibernate.table.Phone_Uni"/>
+ 	     	<mapping class="org.onecellboy.db.hibernate.table.Car_Uni"/>
  			
  			<!-- View Class -->
  			<!--<mapping class=".db.table.Field_Info_View"/> -->
