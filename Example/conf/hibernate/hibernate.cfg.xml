@@ -56,6 +56,7 @@
  	
  	     	<mapping class="org.onecellboy.db.hibernate.table.Phone_Bi"/>
  	     	<mapping class="org.onecellboy.db.hibernate.table.Car_Bi"/>
+ 	     	<mapping class="org.onecellboy.db.hibernate.table.Club_Bi"/>
  	     	
  	     	<mapping class="org.onecellboy.db.hibernate.table.People_Car"/>
  	     	
@@ -64,6 +65,8 @@
  	     	<mapping class="org.onecellboy.db.hibernate.table.People_Uni"/>
  	     	<mapping class="org.onecellboy.db.hibernate.table.Phone_Uni"/>
  	     	<mapping class="org.onecellboy.db.hibernate.table.Car_Uni"/>
+ 	     	
+ 	     	<mapping class="org.onecellboy.db.hibernate.table.Apartment_Embeddable"/>
  			
  			<!-- View Class -->
  			<!--<mapping class=".db.table.Field_Info_View"/> -->

@@ -67,6 +67,7 @@ public class OneToManyJoinTableBi {
 		People_Bi people=new People_Bi();
 		people.setName("조인");
 		
+	
 		
 		/*people 과 car 이 서로가 서로를 설정하지 않으면 insert는 되는데 관계가 맺어 지지 않는다.(참조가 null이 된다.)*/
 		Car_Bi car1 = new Car_Bi();
@@ -87,6 +88,8 @@ public class OneToManyJoinTableBi {
 		
 		
 		session.save(people);
+		
+	
 		
 		test_id = people.getId();
 		

@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -43,8 +44,21 @@ public class People_Bi {
 	private List<Car_Bi> cars = new LinkedList<Car_Bi>();
 	
 	
+	@ManyToMany(fetch=FetchType.LAZY,mappedBy="peoples", cascade = CascadeType.ALL)
+	private List<Club_Bi> clubs = new LinkedList<Club_Bi>();
 	
 	
+	
+	
+	
+	public List<Club_Bi> getClubs() {
+		return clubs;
+	}
+
+	public void setClubs(List<Club_Bi> clubs) {
+		this.clubs = clubs;
+	}
+
 	public List<Car_Bi> getCars() {
 		return cars;
 	}

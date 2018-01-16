@@ -63,7 +63,7 @@ public class OneToManyJoinTableUni {
 		tx = session.beginTransaction();
 		
 		People_Uni people=new People_Uni();
-		people.setName("아반떼");
+		people.setName("이름");
 		
 		
 		/*people 과 car 이 서로가 서로를 설정하지 않으면 insert는 되는데 관계가 맺어 지지 않는다.(참조가 null이 된다.)*/
