@@ -67,6 +67,13 @@
  	     	<mapping class="org.onecellboy.db.hibernate.table.Car_Uni"/>
  	     	
  	     	<mapping class="org.onecellboy.db.hibernate.table.Apartment_Embeddable"/>
+ 	     	<mapping class="org.onecellboy.db.hibernate.table.Apartment_Idclass"/>
+ 	     	
+ 	     	
+ 	     	<mapping class="org.onecellboy.db.hibernate.table.Student"/>
+ 	     	<mapping class="org.onecellboy.db.hibernate.table.Course"/>
+ 	     	<mapping class="org.onecellboy.db.hibernate.table.Score"/>
+ 			
  			
  			<!-- View Class -->
  			<!--<mapping class=".db.table.Field_Info_View"/> -->
