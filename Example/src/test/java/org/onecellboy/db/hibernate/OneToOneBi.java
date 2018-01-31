@@ -120,6 +120,7 @@ public class OneToOneBi {
 		
 		System.out.println("*people.id : "+people.getId());
 		System.out.println("*people.name : "+people.getName());
+		System.out.println("*people.getUpperName : "+people.getUpperName());
 		
 		People_Info_Bi people_Info = people.getPeople_Info();
 		

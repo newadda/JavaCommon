@@ -18,6 +18,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Formula;
+
 @Entity
 @Table(name="people")
 public class People_Bi {
@@ -49,7 +51,14 @@ public class People_Bi {
 	
 	
 	
+	//@Formula( "upper( PEOPLE_NAME )" )
+	@Formula( "( select Max(o.PEOPLE_ID) from people o)" )
+	private int upperName;
 	
+	public int getUpperName() {
+		return upperName;
+	}
+
 	
 	public List<Club_Bi> getClubs() {
 		return clubs;

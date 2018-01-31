@@ -262,8 +262,8 @@ public class HQL {
 		
 		System.out.println();
 		System.out.println("======== INSERT =========");
-		query = session.createQuery("INSERT INTO Student (id,name,birthday)  Select (a.id)+99,a.name,a.birthday from Student a");
-
+		//query = session.createQuery("INSERT INTO Student (id,name,birthday)  Select (a.id)+99,a.name,a.birthday from Student a ");
+		query = session.createQuery("INSERT INTO Student (id,name,birthday)  Select MAX(a.id)+999,a.name,a.birthday from Student a ");
 		affectedCount = query.executeUpdate();
 		System.out.println("row affected : ="+affectedCount);
 		
