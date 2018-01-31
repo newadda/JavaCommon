@@ -20,7 +20,13 @@ subprojects {
     }
 }
 
-project(':Example') {
+project(':HibernateExample') {
+    dependencies {
+      //  compile project(':module-common')
+    }
+}
+
+project(':AkkaExample') {
     dependencies {
       //  compile project(':module-common')
     }

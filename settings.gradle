@@ -1,2 +1,3 @@
 rootProject.name = 'JavaCommon'
 include 'HibernateExample'
+include 'AkkaExample'
