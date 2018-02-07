@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<Configuration monitorInterval="5" packages="org.apache.logging.log4j.nosql.appender">
+	<properties>
+		<property name="name">fep_server</property>
+		<property name="pattern">%marker %d{yyyy-MM-dd HH:mm:ss.SSS} | %-5.5p | %-10.10t | %-20.20C:%-5.5L | %msg%n</property>
+		
+ 
+
+
+<!-- 
+It will look like that:
+2013-04-03 07:37:51.993 | WARN  | main       | lnetgateway.Server:56    | My app is logging stuff
+-->
+	</properties>
+
+ 
+ <!-- Appender, Layout 설정 -->
+ <Appenders>
+  <Console name="console" target="SYSTEM_OUT">
+
+ 
+
+   <!--  <PatternLayout pattern="${pattern}"/> -->
+     <PatternLayout pattern="%marker %d{HH:mm:ss.SSS} %-5level %class{36} %L %M  %MDC  - %msg%xEx%n"/>
+  </Console>
+ 
+  <!-- 
+  <File name="file" fileName="./logs/file/sample.log" append="true" >
+      <PatternLayout pattern="${pattern}"/>
+    <JSONLayout complete="false" compact="true" eventEol="true" locationInfo="true" properties="true"></JSONLayout>
+  </File>
+  -->
+  <!-- 
+  <RollingFile name="RollingFile" bufferedIO="true" bufferSize="800" immediateFlush="true" fileName="/var/log/videounse/signal/signal.log"
+	                           filePattern="/var/log/videounse/signal/$${date:yyyy-MM}/signal-%d{yyyy-MM-dd}-%i.log.gz">
+
+			 <JSONLayout complete="false" compact="true" eventEol="true" locationInfo="true" properties="true"></JSONLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="50 MB"/> 
+			</Policies>
+  </RollingFile>
+   -->
+ <!-- 
+  <NoSql name="databaseAppender" >
+   		<Filters>
+        <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+      </Filters>
+            <MongoDb databaseName="log" collectionName="signallog" factoryClassName="org.videounse.log.log4j.Log4j2MongoDBFactory" factoryMethodName="getMongodb" />
+  </NoSql>
+  -->
+   <!-- 
+    <Async name="Async" shutdownTimeout="10000">
+  		<AppenderRef ref="databaseAppender"/>
+  </Async>
+    -->
+ </Appenders>
+ 
+
+ <Loggers>
+  <!-- Logger 설정
+  <Logger name="egovLogger" level="DEBUG" additivity="false">
+   <AppenderRef ref="console"/>
+   <AppenderRef ref="file"/>
+    <AppenderRef ref="RollingFile"/>
+  </Logger>
+   -->
+   <Logger name="org.hibernate" level="WARN" additivity="false">
+  
+  </Logger>
+
+  <Root level="TRACE">
+       <!-- Logger 설정          -->
+      <AppenderRef ref="console"/>
+       <!-- <AppenderRef ref="RollingFile"/>-->
+      <!-- <AppenderRef ref="databaseAppender"/> -->
+        <!--  <AppenderRef ref="Async"/>-->
+
+  </Root>
+ </Loggers>
+
+</Configuration>
