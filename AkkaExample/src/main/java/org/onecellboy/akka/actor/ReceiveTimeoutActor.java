@@ -20,7 +20,9 @@ public class ReceiveTimeoutActor extends AbstractActor {
 	
 	@Override
 	public Receive createReceive() {
-		  return receiveBuilder().match(ReceiveTimeout.class, r -> {
+		  return receiveBuilder()
+				  .match(String.class, s->{})
+				  .match(ReceiveTimeout.class, r -> {
 			  log.info("Timeout");
 		        //getContext().setReceiveTimeout(Duration.Undefined());
 		      }).build();

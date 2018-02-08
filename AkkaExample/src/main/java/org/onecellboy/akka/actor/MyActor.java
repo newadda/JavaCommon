@@ -20,6 +20,7 @@ public class MyActor extends AbstractActor {
 	@Override
 	public Receive createReceive() {
 		// TODO Auto-generated method stub
+		
 		return receiveBuilder()
 				.match(String.class,  s->{
 					 log.info("Received String message: {}", s);

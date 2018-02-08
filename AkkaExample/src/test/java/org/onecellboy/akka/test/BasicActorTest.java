@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -16,6 +17,7 @@ import org.junit.runners.MethodSorters;
 import org.onecellboy.akka.actor.ActorIdentityActor;
 import org.onecellboy.akka.actor.AnswerActor;
 import org.onecellboy.akka.actor.ArgActor;
+import org.onecellboy.akka.actor.BecomeUnbecomActor;
 import org.onecellboy.akka.actor.CreatorActor;
 import org.onecellboy.akka.actor.Master;
 import org.onecellboy.akka.actor.MyActor;
@@ -23,6 +25,8 @@ import org.onecellboy.akka.actor.ReceiveTimeoutActor;
 import org.onecellboy.akka.actor.TimerActor;
 
 import com.google.common.primitives.UnsignedInts;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSelection;
@@ -51,7 +55,14 @@ public class BasicActorTest {
 	
 	@BeforeClass
 	  public static void setup() {
-	    system = ActorSystem.create();
+		
+		
+		Config load = ConfigFactory.load("application.conf");
+		system = ActorSystem.create("akka",load);
+	    
+	    
+	    
+	    
 	  }
 	  
 	  @AfterClass
@@ -59,11 +70,24 @@ public class BasicActorTest {
 	    TestKit.shutdownActorSystem(system);
 	    system = null;
 	  }
-
+	  
+	  
+	  @After
+		public void testAfter()
+		{
+		    System.out.println("================================================");
+			System.out.println();
+			System.out.println();
+		}
+	  
+	  
 	
 	@Test
-	public void _01basicTest() {
+	public void _001basicTest() {
 		 
+		
+		System.out.println("=================기본 액터 테스트 ActorRef, Tell, Receive=================");
+		
 		final String testMsg = "test_mesg";
 		final TestKit probe = new TestKit(system);
 
@@ -96,12 +120,51 @@ public class BasicActorTest {
 		final Terminated msg = probe.expectMsgClass(Terminated.class);
 		assertEquals(msg.actor(), target);
 		      
-	
+		
 	}
+	
+	
+	@Test
+	public void _002killTest()
+	{
+		
+		System.out.println("=================Actor Stop Test=================");
+
+		final String testMsg = "test_mesg";
+		final TestKit probe = new TestKit(system);
+
+		final Props props = Props.create(MyActor.class);
+		ActorRef target=null;
+		target = system.actorOf(props);
+		
+		probe.watch(target);
+		
+		// Kill 메세지는 actor를 중지시키고 ActorKilledException을 던진다.
+		// Kill 메세지는 actor의 작업을 일시 중지시키고 해당 actor의 supervisor에게 ActorKilledException을 던진다. 이때 actor에 대한 핸들링(resuming, restarting, terminating)은 supervisor가 결정한다.
+		target.tell(akka.actor.Kill.getInstance(), ActorRef.noSender());
+		Terminated msg = probe.expectMsgClass(Terminated.class);
+		assertEquals(msg.actor(), target);
+		
+		target = system.actorOf(props);
+		probe.watch(target);
+		// PoisonPill 메세지는 해당 메세지가 일반 메세지 같이 mailbox 에 들어가고 이 메세지가 처리될때 actor는 중지된다.
+		// 다시 말해 PosionPill 이전 메세지까지 다 처리하고 중지된다는 것이다.
+		target.tell(akka.actor.PoisonPill.getInstance(), ActorRef.noSender());
+		msg = probe.expectMsgClass(Terminated.class);
+		assertEquals(msg.actor(), target);
+	
+		
+		
+	}
+	
+	
+	
+	
+	
 
 	
 	@Test
-	public void _02actorSelectionTest() {
+	public void _003actorSelectionTest() {
 		 
 		final TestKit probe = new TestKit(system);
 
@@ -166,7 +229,7 @@ public class BasicActorTest {
 	
 	
 	@Test
-	public void _03askTest()
+	public void _004askTest()
 	{
 		final TestKit probe = new TestKit(system);
 
@@ -190,8 +253,8 @@ public class BasicActorTest {
 	}
 	
 	
-	@Test
-	public void _04TimeoutTest()
+	//@Test
+	public void _005TimeoutTest()
 	{
 		
 		final TestKit probe = new TestKit(system);
@@ -202,8 +265,8 @@ public class BasicActorTest {
 	}
 	
 	
-	@Test
-	public void _05TimerTest()
+	//@Test
+	public void _006TimerTest()
 	{
 		
 		final TestKit probe = new TestKit(system);
@@ -213,11 +276,32 @@ public class BasicActorTest {
 		ActorRef answer = system.actorOf(props,"timer");
 	}
 	
+	@Test
+	public void _0061becomeUnbecomeTest()
+	{
+		
+		System.out.println("=================Become ,  Unbecome 테스트=================");
+		
+		
+		final TestKit probe = new TestKit(system);
+
+		final Props props = Props.create(BecomeUnbecomActor.class);
+		
+		ActorRef target = system.actorOf(props,"come");
+		
+		//target.tell("become ", ActorRef.noSender());
+		
+		target.tell("mesg", ActorRef.noSender());
+		
+	}
 	
+		
 
 	@Test
-	public void _06RouterTest()
+	public void _007RouterTest()
 	{
+		
+		
 		
 		final TestKit probe = new TestKit(system);
 
@@ -246,8 +330,10 @@ public class BasicActorTest {
 		router.tell(new Master.Work("test17"), ActorRef.noSender());
 	}
 	
+	
+	
 	@Test
-	public void _07PropsTest()
+	public void _008PropsTest()
 	{
 		Props props = null; 
 		
@@ -295,19 +381,14 @@ public class BasicActorTest {
 	
 	
 	
-	@Test
-	public void _08DeathWatchTest()
-	{
-		
-		
-	}
+
 	
 	
 	
 	
 	
 	@Test
-	public void _100()
+	public void _ZZZ()
 	{
 		System.out.println("end");
 		pause();

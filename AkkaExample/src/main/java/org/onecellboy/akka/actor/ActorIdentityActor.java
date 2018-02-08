@@ -15,7 +15,7 @@ public class ActorIdentityActor extends AbstractActor {
 	 final Integer identifyId = 1;
 	
 	public ActorIdentityActor() {
-	
+
 	
 	}
 	
