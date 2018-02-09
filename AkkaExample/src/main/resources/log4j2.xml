@@ -21,7 +21,7 @@ It will look like that:
  
 
    <!--  <PatternLayout pattern="${pattern}"/> -->
-     <PatternLayout pattern="11111111%marker %d{HH:mm:ss.SSS} %-5level %class{36} %L %M  %MDC  - %msg%xEx%n"/>
+     <PatternLayout pattern="%marker %d{HH:mm:ss.SSS} %-5level %class{36} %L %M  %MDC  - %msg%xEx%n"/>
   </Console>
  
   <!-- 

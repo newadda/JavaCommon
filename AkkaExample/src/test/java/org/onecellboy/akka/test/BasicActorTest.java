@@ -17,7 +17,7 @@ import org.junit.runners.MethodSorters;
 import org.onecellboy.akka.actor.ActorIdentityActor;
 import org.onecellboy.akka.actor.AnswerActor;
 import org.onecellboy.akka.actor.ArgActor;
-import org.onecellboy.akka.actor.BecomeUnbecomActor;
+import org.onecellboy.akka.actor.BecomeUnbecomeActor;
 import org.onecellboy.akka.actor.CreatorActor;
 import org.onecellboy.akka.actor.Master;
 import org.onecellboy.akka.actor.MyActor;
@@ -285,7 +285,7 @@ public class BasicActorTest {
 		
 		final TestKit probe = new TestKit(system);
 
-		final Props props = Props.create(BecomeUnbecomActor.class);
+		final Props props = Props.create(BecomeUnbecomeActor.class);
 		
 		ActorRef target = system.actorOf(props,"come");
 		
