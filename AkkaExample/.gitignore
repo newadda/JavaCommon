@@ -3,6 +3,8 @@
 **/.settings/
 **/.classpath
 **/.project
+journal
+snapshots
 
 
 # Ignore Gradle GUI config
